@@ -6,14 +6,16 @@ Generate diff
 Usage:
   gendiff (-h | --help)
   gendiff (-v | --version)
+  gendiff [--format <fmt>] <firstFile> <secondFile>
 
 Options:
-  -h --help     Show this screen.
-  -v --version  Show version.
+  -h --help           Show this screen.
+  -v --version        Show version
+  --format <fmt>      Report format [default: stylish]
 
 DOC;
 
 require(__DIR__ . '/src/docopt.php');
-$args = Docopt::handle($doc, array('version'=>'Gendiff 0.1.0'));
+$args = Docopt::handle($doc, array('version'=>'Gendiff 0.1.0', 'h'=>$doc));
 foreach ($args as $k=>$v)
     echo $k.': '.json_encode($v).PHP_EOL;
